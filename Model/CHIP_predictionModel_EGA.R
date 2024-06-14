@@ -11,8 +11,8 @@ library(xgboost)
 library(readxl)
 library(writexl)
 
-labdir<-"I:/Users/Jenna/CHIP project"
-EGAdir<-file.path(labdir, "EGAdata")
+
+EGAdir<-file.path("Path/to/Data/", "EGAdata")
 
 model_list<- readRDS(file=file.path(labdir, "CHIP_model_list_allTraining.rds"))
 
