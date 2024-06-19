@@ -38,12 +38,9 @@ The following R packages are required for the analysis:
 - `tidyr`
 - `dplyr`
 - `magrittr`
-- `stringr`
 - `caret`
 - `naivebayes`
 - `xgboost`
-- `readxl`
-- `writexl`
 
 
 ## Annotation 
