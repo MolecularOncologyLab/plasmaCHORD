@@ -31,7 +31,22 @@ Data used for the validation cohort was acquired from MSK-IMPACT trial and can b
 
 Razavi P, Li BT, Brown DN, et al. High-intensity sequencing reveals the sources of plasma circulating cell-free DNA variants. Nat Med. 2019;25(12):1928-1937. https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7061455/. Accessed Jun 24, 2023. doi: 10.1038/s41591-019-0652-7
 
-### Annotation 
+
+## R Dependencies
+The following R packages are required for the analysis:
+
+- `tidyr`
+- `dplyr`
+- `magrittr`
+- `stringr`
+- `caret`
+- `naivebayes`
+- `xgboost`
+- `readxl`
+- `writexl`
+
+
+## Annotation 
 
 Variant level annotation data was accessed via [Open-Cravat](https://github.com/KarchinLab/open-cravat)
 
