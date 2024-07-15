@@ -15,7 +15,7 @@ This repository contains the code and analysis from the paper "Machine Learning 
    - **Description:** This script will identify reads corresponding to the fragments containing the somatic variants. Before running must configure path to variant list and path to Bam files. 
 
 4. **Calculate Summary Statistics for Each Position**
-   - **Tools:** Script [here] (cfDNA_CHIP_MLM/Data_Preprocessing/CHIP_EGA_fragmentLevel_sumStats.R) 
+   - **Tools:** Script [here](cfDNA_CHIP_MLM/Data_Preprocessing/CHIP_EGA_fragmentLevel_sumStats.R) 
    - **Description:** Script to calculate various statistical tests on the variant-containing fragments and the other fragments at that positions.  
 
 5. **Run Model to Predict Origin of Variant**
