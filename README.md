@@ -2,12 +2,25 @@
 
 This repository contains the code and analysis from the paper "Machine Learning Approaches to Determine Variant Origin in Liquid Biopsies" by Canzoniero et al.
 
-## Pipeline Overview
-1. Sample Alignment and Pre-processing
-2. Somatic Variant Calling
-3. Identification of Reads/Fragments with Somatic Variants
-4. Calculation of Summary Statistics for Each Position
-5. Model Execution to Predict the Origin of the Variant
+### Pipeline Overview:
+1. **Sample Alignment and Pre-processing**
+   - **Tools:** BWA (or Bowtie2), Samtools
+   - **Description:** Raw sequencing data is aligned to the reference genome using BWA. The resulting alignments are then sorted and indexed with Samtools. Depending on samples, quality control and trimming may be necessary. 
+
+2. **Somatic Variant Calling**
+   - **Tools:** Mutect2, Strelka2
+   - **Description:** Any variant caller optimized for detecting low-frequency variants in cfDNA samples is acceptable. 
+3. **Identify Reads/Fragments with Somatic Variants**
+   - **Tools:** [Python Script](cfDNA_CHIP_MLM/Data_Preprocessing/Validation_Extract_Fragments.py) and R code (need to upload script here!)
+   - **Description:** This script will identify reads corresponding to the fragments containing the somatic variants. Before running must configure path to variant list and path to Bam files. 
+
+4. **Calculate Summary Statistics for Each Position**
+   - **Tools:** Script [here] (cfDNA_CHIP_MLM/Data_Preprocessing/CHIP_EGA_fragmentLevel_sumStats.R) 
+   - **Description:** Script to calculate various statistical tests on the variant-containing fragments and the other fragments at that positions.  
+
+5. **Run Model to Predict Origin of Variant**
+   - **Tools:** [Prediction Model](cfDNA_CHIP_MLM/Model/)
+   - **Description:** R Code and weights needed to generate the origin prediction based on the calculations in the previous step. 
 
 ## Data
 
