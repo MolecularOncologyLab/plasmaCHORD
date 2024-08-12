@@ -11,7 +11,8 @@ library(stringr)
 library(pracma)
 library(ggplot2)
 
-EGAdir<-"I:/Users/Jenna/CHIP project/EGAdata"
+
+EGAdir<-"I:/Path/to/Data"
 
 
 serialcohort<-readRDS(file.path(EGAdir, "CHIP_EGAcohort_8_20_22.rds"))
@@ -29,15 +30,6 @@ processedfiles<-tibble(filename= list.files(file.path(EGAdir,"rds") ,
 
 filelist2<-inner_join(serialcohort, processedfiles)
 
-#serialcohort here is the EGA cohort
-
-#####################################################
-# 467 variants missing - did not get processed on the #cluster, not in the processed files dir
-#missingEGAindex<-serialcohort%>%
-#  filter(index %in% setdiff(serialcohort$index, #filelist2$index))
-
-#saveRDS(missingEGAindex, file.path(EGAdir, #"CHIP_EGAcohort_missing.rds"))
-####################################################
 
 Marass<-function(d=t1b, tumor=c(127:141, 272:292), CH=c(173:191, 346-361)){
   m<-d%>%
@@ -240,36 +232,3 @@ ggplot(data=allSumStats_EGA, aes(x=distinct.mutant.reads,
 
 saveRDS(allSumStats_EGA, file.path(EGAdir, "allSumStats_EGA.rds"))
 
-
-##################################################
-### Trying to determine where the missing data comes from
-#agedata<-read_xlsx(file.path(EGAdir, "Razavi Fig 4 source #data.xlsx"),
-#                   sheet="Fig_4c")
-#agedata2<-agedata%>%select(patient.id=patient_id, tissue, #age)%>%
-  # filter(patient.id %in% pts_included)%>%
-#  distinct()
-#noage<-setdiff(unique(allSumStats_EGA2$patient.id), #agedata2$patient.id)
-#dim(serialcohort[serialcohort$patient.id %in% noage, ])
-# 1440 variants with patients with age
-#noage_cohort<-serialcohort[!serialcohort$patient.id %in% #noage, ]
-
-#975 of 1440 were extracted from bam files
-#length(intersect(processedfiles$index, noage_cohort$index ))
-#includedindex<-intersect(processedfiles$index, #noage_cohort$index )
-#length(unique(beforeP(includedindex, "__")))
-
-#length(intersect(includedindex, allSumStats_EGA2$index))
-
-## 566 variants that were not able to calculate summary statistics 
-#noSumStats<-allSumStats_EGA%>%
-#  filter(index %in% includedindex)%>%
-#  filter(is.na(actual_nmut))%>%
-#  mutate(across(where(is.character), as.factor))
-
-#yesSumStats<-allSumStats_EGA%>%
-#  filter(index %in% includedindex)%>%
-#  filter(!is.na(actual_nmut))%>%
-#  mutate(across(where(is.character), as.factor))
-
-#summary(noSumStats[ , 2:14])
-#summary(yesSumStats[ , 2:14])
