@@ -11,15 +11,15 @@ This repository contains the code and analysis from the paper "plasmaCHORD-A Mac
    - **Tools:** Mutect2, Strelka2
    - **Description:** Any variant caller optimized for detecting low-frequency variants in cfDNA samples is acceptable. 
 3. **Identify mutant and wild-type fragments**
-   - **Tools:** [Python Script](plasmaCHORD/Data_Preprocessing/Generate_Fragment_Files.py) and R code
-   - **Description:** This script will identify reads/fragments containing variant of interest, as well as, wild-type fragments spanning that loci and will collect relevant data on each fragment and output to a .csv file for each variant.  Before running you should ensure that formatting in your list of variants/VCF file is consistent with the script. For example, the same two base-pair deletion can be written as chr1:18999-AAA-A or 1-18999-AA-_. 
+   - **Tools:** [Python Script](Data_Preprocessing/Generate_Fragment_Files.py) and R code
+   - **Description:** This script will identify reads/fragments containing variant of interest, as well as, wild-type fragments spanning that loci and will collect relevant data on each fragment and output to a .csv file for each variant.  
 
 4. **Calculate Summary Statistics for Each Position**
-   - **Tools:** Script [here](plasmaCHORD/Data_Preprocessing/CHIP_fragmentLevel_sumStats.R) 
+   - **Tools:** Script [here](Data_Preprocessing/CHIP_fragmentLevel_sumStats.R) 
    - **Description:** Script to calculate various statistical tests on the variant-containing fragments and the other fragments at that positions.  
 
 5. **Run Model to Predict Origin of Variant**
-   - **Tools:** [Prediction Model](plasmaCHORD/Model/)
+   - **Tools:** [Prediction Model](Model/)
    - **Description:** R Code and weights needed to generate the origin prediction based on the calculations in the previous step. 
 
 ## Data
