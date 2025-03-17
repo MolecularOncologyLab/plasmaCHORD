@@ -31,7 +31,7 @@ processedfiles<-tibble(filename= list.files(file.path(EGAdir,"rds") ,
 filelist2<-inner_join(serialcohort, processedfiles)
 
 
-Marass<-function(d=t1b, tumor=c(127:141, 272:292), CH=c(173:191, 346-361)){
+Marass<-function(d=t1b, tumor=c(127:141, 272:292), CH=c(173:191, 346:361)){
   m<-d%>%
     filter(mutation=="mutant")%>%
     select(width)
@@ -74,8 +74,7 @@ for (j in 1:dim(filelist2)[1]){
   t1<-readRDS(file.path(filelist2$direct[j], file1))
   fname<-filelist2$index[j]
   
-  ## problem with MSK-VB-0006__chr12:111856097_C>T as only 1 mutant fragment
-  
+ 
   t1b<-t1%>%
     filter(mutation=="mutant" | mutation=="wild")%>%
     mutate(rel_start=mut_loc - start)%>%
