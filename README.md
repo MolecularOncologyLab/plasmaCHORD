@@ -1,4 +1,4 @@
-# cfDNA Variant Origin Classifier
+# plasmaCHORD
 
 This repository contains the code and analysis from the paper "plasmaCHORD-A Machine Learning Approach to Distibguish Clonal Hematopoesis-Derived Variants in Liquid Biopsies from Patients with Solid Tumors" by Canzoniero et al.
 
