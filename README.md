@@ -1,6 +1,6 @@
 # cfDNA Variant Origin Classifier
 
-This repository contains the code and analysis from the paper "Machine Learning Approaches to Determine Variant Origin in Liquid Biopsies" by Canzoniero et al.
+This repository contains the code and analysis from the paper "plasmaCHORD-A Machine Learning Approach to Distibguish Clonal Hematopoesis-Derived Variants in Liquid Biopsies from Patients with Solid Tumors" by Canzoniero et al.
 
 ### Pipeline Overview:
 1. **Sample Alignment and Pre-processing**
@@ -10,16 +10,16 @@ This repository contains the code and analysis from the paper "Machine Learning 
 2. **Somatic Variant Calling**
    - **Tools:** Mutect2, Strelka2
    - **Description:** Any variant caller optimized for detecting low-frequency variants in cfDNA samples is acceptable. 
-3. **Identify Reads/Fragments with Somatic Variants**
-   - **Tools:** [Python Script](cfDNA_CHIP_MLM/Data_Preprocessing/Validation_Extract_Fragments.py) and R code (need to upload script here!)
-   - **Description:** This script will identify reads corresponding to the fragments containing the somatic variants. Before running must configure path to variant list and path to Bam files. 
+3. **Identify mutant and wild-type fragments**
+   - **Tools:** [Python Script](plasmaCHORD/Data_Preprocessing/Generate_Fragment_Files.py) and R code
+   - **Description:** This script will identify reads/fragments containing variant of interest, as well as, wild-type fragments spanning that loci and will collect relevant data on each fragment and output to a .csv file for each variant.  Before running you should ensure that formatting in your list of variants/VCF file is consistent with the script. For example, the same two base-pair deletion can be written as chr1:18999-AAA-A or 1-18999-AA-_. 
 
 4. **Calculate Summary Statistics for Each Position**
-   - **Tools:** Script [here](cfDNA_CHIP_MLM/Data_Preprocessing/CHIP_EGA_fragmentLevel_sumStats.R) 
+   - **Tools:** Script [here](plasmaCHORD/Data_Preprocessing/CHIP_fragmentLevel_sumStats.R) 
    - **Description:** Script to calculate various statistical tests on the variant-containing fragments and the other fragments at that positions.  
 
 5. **Run Model to Predict Origin of Variant**
-   - **Tools:** [Prediction Model](cfDNA_CHIP_MLM/Model/)
+   - **Tools:** [Prediction Model](plasmaCHORD/Model/)
    - **Description:** R Code and weights needed to generate the origin prediction based on the calculations in the previous step. 
 
 ## Data
@@ -52,7 +52,6 @@ The following R packages are required for the analysis:
 - `dplyr`
 - `magrittr`
 - `caret`
-- `naivebayes`
 - `xgboost`
 
 
